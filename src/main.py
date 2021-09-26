@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter.constants import N
+from tkinter.constants import END, N
 import youtube_dl
 from pathlib import Path
 import os
@@ -21,9 +21,8 @@ class Window:
         )
 
         # TEXTBOXES
-        self.url_textbox = tk.Entry(
-            window, width=40, textvariable=self.url_input
-        ).place(relx=0.5, anchor=N, rely=0.06)
+        self.url_textbox = tk.Entry(window, width=40, textvariable=self.url_input)
+        self.url_textbox.place(relx=0.5, anchor=N, rely=0.06)
 
         # BUTTONS
         self.url_button = tk.Button(
@@ -39,7 +38,7 @@ class Window:
         self.inputed_url = self.url_input.get()
         self.url_list.append(self.inputed_url)
         print(self.url_input, self.url_list)
-        # TODO delete the url after pressing add_button
+        self.url_textbox.delete(0, END)
 
     def download_button(self) -> None:
         with youtube_dl.YoutubeDL(
