@@ -39,6 +39,7 @@ class Window:
         self.inputed_url = self.url_input.get()
         self.url_list.append(self.inputed_url)
         print(self.url_input, self.url_list)
+        # TODO delete the url after pressing add_button
 
     def download_button(self) -> None:
         with youtube_dl.YoutubeDL(
